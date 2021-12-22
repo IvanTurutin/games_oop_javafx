@@ -2,50 +2,29 @@ package ru.job4j.puzzle;
 
 public class Win {
     public static boolean check(int[][] board) {
-        boolean rsl = false;
-        if (checkVert(board) || checkHoriz(board)) {
-            rsl = true;
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][i] == 1 && (checkVert(board, i) || checkHoriz(board, i))) {
+                return true;
+            }
         }
-        return rsl;
+        return false;
     }
 
-    private static boolean checkVert (int[][] board) {
-        boolean rsl = false;
-        int count;
-        for (int i = 0; i<board[0].length; i++) {
-            count = 0;
-            if (board[0][i]==1) {
-                count++;
-                for (int k = 1; k<board.length; k++) {
-                    if (board[k][i]==1) {
-                        count++;
-                    }
-                }
-            }
-            if (count==board.length) {
-                rsl = true;
+    private static boolean checkVert (int[][] board, int index) {
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][index] != 1){
+                return false;
             }
         }
-        return rsl;
+        return true;
     }
 
-    private static boolean checkHoriz (int[][] board) {
-        boolean rsl = false;
-        int count;
-        for (int i = 0; i<board.length; i++) {
-            count = 0;
-            if (board[i][0]==1) {
-                count++;
-                for (int k = 1; k<board[0].length; k++) {
-                    if (board[i][k]==1) {
-                        count++;
-                    }
-                }
-            }
-            if (count==board[0].length) {
-                rsl = true;
+    private static boolean checkHoriz (int[][] board, int index) {
+        for (int i = 0; i < board[index].length; i++) {
+            if (board[index][i] != 1){
+                return false;
             }
         }
-        return rsl;
+        return true;
     }
 }
