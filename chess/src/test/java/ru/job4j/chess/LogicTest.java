@@ -7,7 +7,6 @@ import ru.job4j.chess.firuges.black.BishopBlack;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
-
 public class LogicTest {
     @Test
     public void whenCorrectMove()
