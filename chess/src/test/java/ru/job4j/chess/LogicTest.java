@@ -13,6 +13,7 @@ public class LogicTest {
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
+        logic.add(new BishopBlack(Cell.C8));
         String exc = "";
         try {
             logic.move(Cell.C1, Cell.H6);
@@ -22,47 +23,28 @@ public class LogicTest {
         assertThat("", is(exc));
     }
 
-    @Test
+    @Test(expected = FigureNotFoundException.class)
     public void whenFigureNotFound()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C2));
-        String exc = "";
-        try {
-            logic.move(Cell.C1, Cell.H6);
-        } catch (Exception e) {
-            exc = e.getClass().getName();
-        }
-        assertThat("ru.job4j.chess.FigureNotFoundException", is(exc));
+        logic.move(Cell.C1, Cell.H6);
     }
 
-    @Test
+    @Test(expected = OccupiedCellException.class)
     public void whenOccupiedCell()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
         logic.add(new BishopBlack(Cell.D2));
-        String exc = "";
-        try {
-            logic.move(Cell.C1, Cell.H6);
-        } catch (Exception e) {
-            exc = e.getClass().getName();
-        }
-        assertThat("ru.job4j.chess.OccupiedCellException", is(exc));
-
+        logic.move(Cell.C1, Cell.H6);
     }
 
-    @Test
+    @Test(expected = ImpossibleMoveException.class)
     public void whenImpossibleMove()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
-        String exc = "";
-        try {
-            logic.move(Cell.C1, Cell.H7);
-        } catch (Exception e) {
-            exc = e.getClass().getName();
-        }
-        assertThat("ru.job4j.chess.ImpossibleMoveException", is(exc));
+        logic.move(Cell.C1, Cell.H7);
     }
 }
