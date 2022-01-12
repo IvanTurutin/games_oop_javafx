@@ -9,8 +9,6 @@ import static org.junit.Assert.assertThat;
 
 
 public class LogicTest {
-
-    //@Ignore
     @Test
     public void whenCorrectMove()
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
