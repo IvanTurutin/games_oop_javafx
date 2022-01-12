@@ -30,7 +30,6 @@ public class BishopBlackTest {
         Figure bishopBlack = new BishopBlack(Cell.C1);
         Cell positionDest = Cell.G5;
         Cell[] way = bishopBlack.way(positionDest);
-        //Cell[] wayToTest = new Cell[] {Cell.F4, Cell.E3, Cell.D2, Cell.C1};
         Cell[] wayToTest = new Cell[] {Cell.D2, Cell.E3, Cell.F4, Cell.G5};
         assertThat(wayToTest, is(way));
     }

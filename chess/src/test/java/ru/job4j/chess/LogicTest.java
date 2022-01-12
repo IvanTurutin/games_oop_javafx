@@ -57,7 +57,6 @@ public class LogicTest {
             throws FigureNotFoundException, OccupiedCellException, ImpossibleMoveException {
         Logic logic = new Logic();
         logic.add(new BishopBlack(Cell.C1));
-        //logic.add(new BishopBlack(Cell.D2));
         String exc = "";
         try {
             logic.move(Cell.C1, Cell.H7);
